@@ -118,7 +118,7 @@ $(function() {
      */
     feedList.on('click', 'a', function() {
         var item = $(this);
-
+        menuIcon = $('.menu-icon-link');
         $('body').addClass('menu-hidden');
         loadFeed(item.data('id'));
         return false;

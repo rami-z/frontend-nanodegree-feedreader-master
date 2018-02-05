@@ -35,9 +35,9 @@ $(function () {
         it('URLs are defined', function () {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
-                expect(allFeeds[i].url.length).not.toBe(0)
+                expect(allFeeds[i].url.length).not.toBe(0);
 
-            }
+            };
 
         });
 
@@ -49,11 +49,11 @@ $(function () {
         it('names are defined', function () {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
-                expect(allFeeds[i].name.length).not.toBe(0)
+                expect(allFeeds[i].name.length).not.toBe(0);
 
-            }
+            };
 
-        })
+        });
     });
 
 
@@ -100,7 +100,7 @@ $(function () {
 
         it("has at least a single .entry element within the .feed container when loadFeed function call", function () {
             expect($(".entry").length).toBeGreaterThan(0);
-        })
+        });
 
     });
 

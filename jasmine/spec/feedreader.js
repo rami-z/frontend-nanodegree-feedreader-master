@@ -37,7 +37,7 @@ $(function () {
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url.length).not.toBe(0);
 
-            };
+            }
 
         });
 
@@ -51,7 +51,7 @@ $(function () {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name.length).not.toBe(0);
 
-            };
+            }
 
         });
     });

@@ -66,7 +66,7 @@ $(function () {
         hiding/showing of the menu element.
         */
         it('hidden by default', function () {
-            expect($('body').hasClass('class')).toEqual('menu-hidden');
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
         /* Test that ensures the menu changes
@@ -77,9 +77,9 @@ $(function () {
 
         it("changes visibility when the menu icon is clicked", function () {
             $(".menu-icon-link").trigger("click");
-            expect($('body').attr('class')).toEqual('');//visible
+            expect($('body').hasClass('menu-hidden')).toBe(false);//visible
             $(".menu-icon-link").trigger("click");
-            expect($('body').attr('class')).toEqual('menu-hidden');//invisible
+            expect($('body').hasClass('menu-hidden')).toBe(true);//invisible
         });
 
 
@@ -120,17 +120,18 @@ $(function () {
                 loadFeed(2, function () {
                     newLoadFeed = $(".feed").html();
                     console.log(newLoadFeed);
-                    Done();
+                    done();
                 });
             });
-            
+
         });
 
 
-        it("when a new feed is loaded by the loadFeed function that the content actually changes", function () {
+        it("when a new feed is loaded by the loadFeed function that the content actually changes", function (done) {
             expect(newLoadFeed).not.toEqual(oldLoadFeed);
             console.log("the old is : " + oldLoadFeed);
             console.log("the new is : " + newLoadFeed);
+            done();
         });
     });
 

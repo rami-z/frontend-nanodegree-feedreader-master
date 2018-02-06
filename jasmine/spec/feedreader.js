@@ -66,7 +66,7 @@ $(function () {
         hiding/showing of the menu element.
         */
         it('hidden by default', function () {
-            expect($('body').attr('class')).toEqual('menu-hidden');
+            expect($('body').hasClass('class')).toEqual('menu-hidden');
         });
 
         /* Test that ensures the menu changes
@@ -99,7 +99,7 @@ $(function () {
         });
 
         it("has at least a single .entry element within the .feed container when loadFeed function call", function () {
-            expect($(".entry").length).toBeGreaterThan(0);
+            expect($(".feed .entry").length).toBeGreaterThan(0);
         });
 
     });
@@ -117,12 +117,13 @@ $(function () {
             loadFeed(0, function () {
                 oldLoadFeed = $(".feed").html();
                 console.log(oldLoadFeed);
-
+                loadFeed(2, function () {
+                    newLoadFeed = $(".feed").html();
+                    console.log(newLoadFeed);
+                    Done();
+                });
             });
-            loadFeed(2, function () {
-                newLoadFeed = $(".feed").html();
-                console.log(newLoadFeed);
-            });
+            
         });
 
 

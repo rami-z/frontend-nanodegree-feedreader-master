@@ -52,17 +52,16 @@ it('names are defined', function () {
 4. Write test code to ensures the menu element is hidden by default.
 ```
 it('hidden by default', function () {
-            expect($('body').attr('class')).toEqual('menu-hidden');
-            svz
+            expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 ```
 5. Write test code to ensures the menu changes visibility when the menu icon is clicked.
 ```
 it("changes visibility when the menu icon is clicked", function () {
             $(".menu-icon-link").trigger("click");
-            expect($('body').attr('class')).toEqual('');//visible
+            expect($('body').hasClass('menu-hidden')).toBe(false);//visible
             $(".menu-icon-link").trigger("click");
-            expect($('body').attr('class')).toEqual('menu-hidden');//invisible
+            expect($('body').hasClass('menu-hidden')).toBe(true);//invisible
         });
 ``` 
 6. Create new test suite named `"Initial Entries"`.
@@ -78,7 +77,7 @@ beforeEach(function (done) {
         });
 
         it("has at least a single .entry element within the .feed container when loadFeed function call", function () {
-            expect($(".entry").length).toBeGreaterThan(0);
+            expect($(".feed .entry").length).toBeGreaterThan(0);
         })
 ``` 
 8. Create test suite named `"New Feed Selection"`.
@@ -89,24 +88,26 @@ describe("New Feed Selection", function () {
 ```
 9.  Write a test code to ensures when a new feed is loaded by the `loadFeed` function that the content actually changes.
 ```
-var oldLoadFeed;
+        var oldLoadFeed;
         var newLoadFeed;
         beforeEach(function (done) {
             loadFeed(0, function () {
                 oldLoadFeed = $(".feed").html();
                 console.log(oldLoadFeed);
+                loadFeed(2, function () {
+                    newLoadFeed = $(".feed").html();
+                    console.log(newLoadFeed);
+                    done();
+                });
+            });
 
-            });
-            loadFeed(2, function () {
-                newLoadFeed = $(".feed").html();
-                console.log(newLoadFeed);
-            });
         });
 
 
-        it("when a new feed is loaded by the loadFeed function that the content actually changes", function () {
+        it("when a new feed is loaded by the loadFeed function that the content actually changes", function (done) {
             expect(newLoadFeed).not.toEqual(oldLoadFeed);
             console.log("the old is : " + oldLoadFeed);
             console.log("the new is : " + newLoadFeed);
+            done();
         });
 ```
